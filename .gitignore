@@ -1,0 +1,28 @@
+# --- Virtual Environments ---
+myenv/
+venv/
+.env/
+env/
+ENV/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ipynb_checkpoints/
+
+# --- Data & Large Files ---
+# If your dataset is very large, uncomment the line below. 
+# student-mat.csv
+
+# --- IDEs & Editors ---
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# --- Project Specific ---
+*.log
+plots/*.png
