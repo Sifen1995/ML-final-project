@@ -3,6 +3,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+
+
 # Set visual style
 sns.set_theme(style="whitegrid")
 plt.rcParams['figure.figsize'] = (12, 8)
@@ -228,3 +230,13 @@ plt.savefig('feature_importance.png')
 plt.show()
 
 #student five -----------
+
+
+
+
+import joblib
+
+# Save the model and the scaler
+joblib.dump(rf_model, 'student_model.pkl')
+joblib.dump(scaler, 'scaler.pkl')
+joblib.dump(X.columns.tolist(), 'features.pkl') # Save feature names
