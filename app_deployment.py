@@ -31,11 +31,9 @@ input_data['failures'] = failures
 input_data['G1'] = g1
 input_data['G2'] = g2
 
-# Scale and Predict
 input_scaled = scaler.transform(input_data)
 prediction = model.predict(input_scaled)[0]
 
-# Display Results
 st.subheader(f"Predicted Final Grade (G3): {prediction:.2f}")
 
 if prediction >= 10:
