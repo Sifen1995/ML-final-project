@@ -80,6 +80,50 @@ plt.title('Top 10 Most Important Features predicting G3')
 plt.savefig('feature_importance.png')
 plt.show()
 
+
+# --- 7. MODEL TRAINING & EVALUATION ---
+
+
+
+from sklearn.linear_model import LinearRegression
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.svm import SVR
+from sklearn.model_selection import cross_val_score
+from sklearn.metrics import mean_absolute_error, r2_score
+import numpy as np
+
+# Define the models
+models = {
+    "Linear Regression": LinearRegression(),
+    "Random Forest": RandomForestRegressor(n_estimators=100, random_state=42),
+    "SVM Regressor": SVR(kernel='rbf')
+}
+
+# Dictionary to store results
+results = {}
+
+print("--- Starting Model Training with Cross-Validation ---")
+
+for name, model in models.items():
+    # Perform 5-Fold Cross-Validation
+    # We use 'neg_mean_absolute_error' because sklearn maximizes scores
+    cv_scores = cross_val_score(model, X_train_scaled, y_train, cv=5, scoring='neg_mean_absolute_error')
+    avg_mae = -cv_scores.mean()
+    
+    # Fit on the full training set
+    model.fit(X_train_scaled, y_train)
+    
+    # Predict on test set
+    predictions = model.predict(X_test_scaled)
+    
+    # Calculate Metrics
+    test_mae = mean_absolute_error(y_test, predictions)
+    test_r2 = r2_score(y_test, predictions)
+    
+    results[name] = {'CV MAE': avg_mae, 'Test MAE': test_mae, 'Test R2': test_r2}
+    
+    print(f"{name}: CV MAE = {avg_mae:.3f} | Test MAE = {test_mae:.3f} | Test R2 = {test_r2:.3f}")
+
 #student five -----------
 
 
