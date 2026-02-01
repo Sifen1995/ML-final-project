@@ -3,15 +3,32 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+# Set visual style
+sns.set_theme(style="whitegrid")
+plt.rcParams['figure.figsize'] = (12, 8)
 
+# 1. Load Dataset
+# Note: UCI dataset uses semicolons ';' as separators
+try:
+    df = pd.read_csv('student-mat.csv', sep=';')
+    print("Dataset loaded successfully!")
+except FileNotFoundError:
+    print("Error: Please ensure 'student-mat.csv' is in your directory.")
 
+# --- 2. BASIC INSPECTION ---
+print("\n--- Dataset Info ---")
+print(df.info())
+print("\n--- Missing Values ---")
+print(df.isnull().sum())
 
-
-
-
-
-
-
+# --- 3. TARGET DISTRIBUTION (G3) ---
+plt.figure(figsize=(8, 5))
+sns.histplot(df['G3'], kde=True, color='teal', bins=20)
+plt.title('Distribution of Final Grades (G3)')
+plt.xlabel('Final Grade')
+plt.ylabel('Frequency')
+plt.savefig('g3_distribution.png')
+plt.show()
 
 
 # --- 5. KEY RELATIONSHIPS ---
