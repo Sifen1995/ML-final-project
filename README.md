@@ -1,5 +1,15 @@
 # ML Project
 
+
+
+## 👥 Group Members
+1. **Sifen Getachew** — UGR/2452/15
+2. **Girma Enkuchile** — UGR/8130/15
+3. **Yitbarek Alemu** — UGR/7554/15
+4. **Blen Nigussie** — UGR/3480/15
+5. **Abiy Aragie** — UGR/8104/15
+
+
 A small machine learning project using the `student-mat.csv` dataset.
 
 ## Description
